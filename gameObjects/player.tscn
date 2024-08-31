@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5iuj76ba2pbq"]
+
+[ext_resource type="Script" path="res://Scripts/recorder_car.gd" id="1_iv881"]
+[ext_resource type="Texture2D" uid="uid://blxaemivvf3h8" path="res://Assets/PNG/Cars/car_green_1.png" id="2_fh6og"]
+[ext_resource type="Script" path="res://Scripts/visible_sensor.gd" id="3_h3vhn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2dlc"]
+radius = 34.0
+height = 132.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_iv881")
+metadata/_edit_vertical_guides_ = [-125.0, 40.0]
+metadata/_edit_horizontal_guides_ = [-200.0, -40.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_fh6og")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d2dlc")
+debug_color = Color(0.976471, 0, 0.4, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 1.5708
+zoom = Vector2(0.2, 0.2)
+
+[node name="Sensors" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Sensor1" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(0, -1000)
+collision_mask = 2
+collide_with_areas = true
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor2" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(-320, -1000)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor3" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(320, -1000)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor4" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(-400, -400)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor5" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(400, -400)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor6" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(-400, -200)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor7" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(400, -200)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor8" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(-400, 0)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor9" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(400, 0)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor10" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(-400, 400)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor11" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(400, 400)
+collision_mask = 2
+script = ExtResource("3_h3vhn")
+
+[node name="Sensor12" type="RayCast2D" parent="Sensors"]
+target_position = Vector2(0, 400)
+collision_mask = 2
+script = ExtResource("3_h3vhn")

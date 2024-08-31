@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds28csn3421n8"]
+
+[ext_resource type="Script" path="res://Scripts/save_file.gd" id="1_17rh4"]
+
+[node name="SaveFile" type="FileDialog"]
+mode = 2
+title = "Save recording"
+initial_position = 1
+size = Vector2i(683, 400)
+visible = true
+min_size = Vector2i(200, 400)
+dialog_autowrap = true
+access = 2
+filters = PackedStringArray("*.json")
+script = ExtResource("1_17rh4")

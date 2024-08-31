@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6a5a07gljcq7"]
+
+[ext_resource type="Script" path="res://Scripts/CheckPoint.gd" id="1_qb2ev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n01o"]
+size = Vector2(512, 20)
+
+[sub_resource type="Gradient" id="Gradient_gp2od"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0.850985, 0.458133, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4rhie"]
+gradient = SubResource("Gradient_gp2od")
+
+[node name="CheckPoint" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_qb2ev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8n01o")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -175.0
+offset_top = -10.0
+offset_right = 175.0
+offset_bottom = 10.0
+texture = SubResource("GradientTexture1D_4rhie")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

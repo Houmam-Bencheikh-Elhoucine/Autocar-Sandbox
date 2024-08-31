@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://ponydv12k4v4"]
+
+[ext_resource type="Script" path="res://Scripts/server_window.gd" id="1_gvu5y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dnl4"]
+font_size = 20
+
+[node name="RunModel" type="Window"]
+title = "Connect to a server"
+initial_position = 1
+size = Vector2i(600, 400)
+min_size = Vector2i(50, 200)
+script = ExtResource("1_gvu5y")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoLabel" type="Label" parent="Control"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+size_flags_horizontal = 3
+text = "Please make sure a UDP server is up and running before confirming."
+label_settings = SubResource("LabelSettings_5dnl4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="IPLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.25
+anchor_right = 0.15
+anchor_bottom = 0.4
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+text = "IP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IPEdit" type="LineEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.4
+placeholder_text = "127.0.0.1"
+clear_button_enabled = true
+
+[node name="PortLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.15
+anchor_bottom = 0.65
+size_flags_horizontal = 3
+text = "PORT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PortEdit" type="LineEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.65
+placeholder_text = "9999"
+clear_button_enabled = true
+structured_text_bidi_override = 6
+structured_text_bidi_override_options = ["[0-9]+"]
+
+[node name="CancelButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.8
+anchor_right = 0.4
+anchor_bottom = 0.9
+offset_bottom = 8.0
+text = "Cancel"
+
+[node name="StartButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.8
+anchor_right = 0.8
+anchor_bottom = 0.9
+offset_bottom = 8.0
+text = "Start"
+
+[connection signal="pressed" from="Control/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]

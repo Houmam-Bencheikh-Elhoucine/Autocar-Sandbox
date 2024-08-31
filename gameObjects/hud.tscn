@@ -1,0 +1,524 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfrvhexobnhxh"]
+
+[ext_resource type="Script" path="res://Scripts/Hud.gd" id="1_x0oiy"]
+[ext_resource type="Script" path="res://Scripts/Controldisplay.gd" id="2_7nqhy"]
+[ext_resource type="Texture2D" uid="uid://d2wxe60lod81u" path="res://Assets/PNG/Buttons/keyboard_arrow_up_1000dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" id="3_yk32g"]
+[ext_resource type="Texture2D" uid="uid://cgx3btx2flkfl" path="res://Assets/PNG/Buttons/keyboard_arrow_down_1000dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" id="4_5oog2"]
+[ext_resource type="Texture2D" uid="uid://d0m02el6hqy8q" path="res://Assets/PNG/Buttons/keyboard_arrow_left_1000dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" id="5_lx7xa"]
+[ext_resource type="Texture2D" uid="uid://ckiarbvklp51a" path="res://Assets/PNG/Buttons/keyboard_arrow_right_1000dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" id="6_1jojn"]
+
+[sub_resource type="Gradient" id="Gradient_ux2bm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.0879488, 0.32392, 0.474073, 0.356863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3rn5j"]
+gradient = SubResource("Gradient_ux2bm")
+
+[sub_resource type="Gradient" id="Gradient_2mp7v"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.0879488, 0.32392, 0.474073, 0.356863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bkxh3"]
+gradient = SubResource("Gradient_2mp7v")
+
+[sub_resource type="Gradient" id="Gradient_va8tc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.713726, 0.380392, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dhvt3"]
+gradient = SubResource("Gradient_va8tc")
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x0oiy")
+metadata/_edit_lock_ = true
+
+[node name="LeftPanel" type="Control" parent="Control"]
+layout_mode = 1
+anchor_right = 0.2
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+texture = SubResource("GradientTexture1D_3rn5j")
+
+[node name="SpeedLabel" type="Label" parent="Control/LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 0
+text = "SPEED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DistanceLabel" type="Label" parent="Control/LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Distance"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LastCPTimeLabel" type="Label" parent="Control/LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 0
+text = "Last checkpoint:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="Control/LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 0.7
+grow_horizontal = 2
+text = "Total time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="Control" parent="Control/LeftPanel"]
+layout_mode = 1
+anchor_top = 0.304
+anchor_right = 1.0
+anchor_bottom = 0.66
+offset_top = 0.00798035
+offset_bottom = -0.280029
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7nqhy")
+metadata/_edit_group_ = true
+
+[node name="ActionLabel" type="Label" parent="Control/LeftPanel/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_left = 0.959999
+offset_right = 0.959991
+text = "Current input"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonUP" type="TextureRect" parent="Control/LeftPanel/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yk32g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonDOWN" type="TextureRect" parent="Control/LeftPanel/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.6
+anchor_right = 0.6
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_5oog2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonLEFT" type="TextureRect" parent="Control/LeftPanel/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.6
+anchor_right = 0.4
+anchor_bottom = 0.8
+texture = ExtResource("5_lx7xa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonRIGHT" type="TextureRect" parent="Control/LeftPanel/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.6
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource("6_1jojn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightPanel" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/RightPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_bkxh3")
+
+[node name="SensorsLabel" type="Label" parent="Control/RightPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sensor data"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorData1" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.25
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData2" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.3
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "02"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData3" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.35
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "03"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData4" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.35
+anchor_right = 1.0
+anchor_bottom = 0.4
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "04"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData5" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.45
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "05"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData6" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.45
+anchor_right = 1.0
+anchor_bottom = 0.5
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "06"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData7" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.55
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "07"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData8" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.55
+anchor_right = 1.0
+anchor_bottom = 0.6
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "08"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData9" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 0.65
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "09"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData10" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 0.7
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData11" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.75
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "11"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
+
+[node name="SensorData12" type="Control" parent="Control/RightPanel"]
+layout_mode = 1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 0.8
+
+[node name="Name" type="Label" parent="Control/RightPanel/SensorData12"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SensorPB" type="TextureProgressBar" parent="Control/RightPanel/SensorData12"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_dhvt3")
